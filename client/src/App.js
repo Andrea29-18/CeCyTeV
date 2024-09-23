@@ -1,28 +1,46 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import GenerateQR from './components/GenerateQR';
 import ScanQR from './components/ScanQR';
-import './App.css';  // Importar los estilos
+import Ubicacion from './components/Ubicacion';
 
-function App() {
+const App = () => {
     return (
-        <Router>
-            <nav>
-                <ul>
-                    <li><Link to="/generate">Generar QR</Link></li>
-                    <li><Link to="/scan">Escanear QR</Link></li>
-                </ul>
-            </nav>
-
-            <div className="container">
-                <Routes>
-                    <Route path="/generate" element={<GenerateQR />} />
-                    <Route path="/scan" element={<ScanQR />} />
-                </Routes>
+        <div style={styles.appContainer}>
+            <h1 style={styles.mainTitle}>QR Generator, Scanner & Ubicación</h1>
+            <div style={styles.section}>
+                <GenerateQR />
             </div>
-        </Router>
+            <div style={styles.section}>
+                <ScanQR />
+            </div>
+            <div style={styles.section}>
+                <Ubicacion />
+            </div>
+        </div>
     );
-}
+};
+
+const styles = {
+    appContainer: {
+        textAlign: 'center',
+        padding: '30px',
+        backgroundColor: '#f0f4f8',
+        fontFamily: 'Arial, sans-serif',
+        minHeight: '100vh',
+    },
+    mainTitle: {
+        fontSize: '32px',
+        color: '#2c3e50',
+        marginBottom: '40px',
+    },
+    section: {
+        margin: '30px 0',
+        padding: '20px',
+        backgroundColor: '#fff',
+        borderRadius: '15px',
+        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+    },
+};
 
 export default App;
